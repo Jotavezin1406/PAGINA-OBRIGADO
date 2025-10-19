@@ -2,18 +2,8 @@
 <html lang="pt-BR">
 
 
+
 <head>
-
-
-<script>
-  // Impede que o evento Subscribe automático dispare
-  document.addEventListener('click', (e) => {
-    if (e.target && e.target.innerText.toLowerCase().includes('assinar')) {
-      e.stopImmediatePropagation();
-      console.log('Bloqueado possível evento Subscribe automático');
-    }
-  });
-</script>
 
 
 
@@ -55,6 +45,20 @@
 </script>
 
 
+<script>
+  // Bloqueia que o Meta detecte automaticamente "Subscribe" ao clicar no botão
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('a, button');
+    if (!btn) return;
+
+    // Verifica se o texto do botão é "Acessar agora"
+    if (btn.innerText.trim().toLowerCase() === 'Acessar agora') {
+      // Impede que o evento automático da Meta interprete esse clique como Subscribe
+      e.stopImmediatePropagation();
+      console.log('Bloqueado: evento Subscribe automático');
+    }
+  });
+</script>
 
 
 
