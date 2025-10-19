@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obrigada pela sua compra 💋</title>
+
+  <!-- Estilo simples e quente -->
+  <style>
+    body {
+      background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ddd;
+      max-width: 500px;
+      margin: 10px auto 40px;
+      line-height: 1.6;
+    }
+
+    .heart {
+      color: #ff4d6d;
+      font-size: 2rem;
+      animation: pulse 1.3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    .btn {
+      background: #ff4d6d;
+      color: #fff;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff1e4d;
+      transform: scale(1.05);
+    }
+  </style>
+
+  <!-- Pixel do Facebook -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', 'SEU_PIXEL_ID_AQUI'); // 👉 substitua pelo seu Pixel ID
+  </script>
+</head>
+<body>
+
+  <h1>Compra confirmada 💋</h1>
+  <p>Seu acesso foi liberado. Em instantes você receberá o acesso.<br>
+  Aproveite cada momento... <span class="heart">❤</span></p>
+
+  <a href="https://t.me/+s8YhtjLI6P0zZGNh" class="btn">Acessar agora</a>
+
+  <script>
+    // Captura valor via URL, ex: ?amount=97
+    const urlParams = new URLSearchParams(window.location.search);
+    const amount = urlParams.get('amount') || 0;
+
+    // Dispara evento de compra
+    fbq('track', 'Purchase', {
+      value: parseFloat(amount),
+      currency: 'BRL'
+    });
+
+    console.log("Evento Purchase disparado com valor:", amount);
+  </script>
+</body>
+</html>
