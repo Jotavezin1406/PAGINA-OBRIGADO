@@ -12,16 +12,31 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1251890723633405'); 
-  fbq('track', 'Purchase', {
-      value: 0.00,
-      currency: 'BRL'
-  });
+
+  fbq('init', '1251890723633405'); // seu Pixel ID
 </script>
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1251890723633405&ev=Purchase&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+
+<script>
+  // Captura valor via URL, ex: ?amount=97
+  const urlParams = new URLSearchParams(window.location.search);
+  let amount = parseFloat(urlParams.get('amount'));
+
+  // Se o valor não existir ou não for um número, usa 0
+  if (isNaN(amount)) amount = 0;
+
+  // Dispara evento Purchase apenas uma vez
+  fbq('track', 'Purchase', {
+    value: amount,
+    currency: 'BRL'
+  });
+
+  console.log("Evento Purchase disparado com valor:", amount);
+</script>
+
 
 
 
@@ -92,18 +107,6 @@
 
   <a href="https://t.me/+s8YhtjLI6P0zZGNh" class="btn">Acessar agora</a>
 
-  <script>
-    // Captura valor via URL, ex: ?amount=97
-    const urlParams = new URLSearchParams(window.location.search);
-    const amount = urlParams.get('amount') || 0;
 
-    // Dispara evento de compra
-    fbq('track', 'Purchase', {
-      value: parseFloat(amount),
-      currency: 'BRL'
-    });
-
-    console.log("Evento Purchase disparado com valor:", amount);
-  </script>
 </body>
 </html>
