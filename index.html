@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
+
 <head>
+
+
+<script>
+  // Impede que o evento Subscribe automático dispare
+  document.addEventListener('click', (e) => {
+    if (e.target && e.target.innerText.toLowerCase().includes('assinar')) {
+      e.stopImmediatePropagation();
+      console.log('Bloqueado possível evento Subscribe automático');
+    }
+  });
+</script>
+
+
+
+
 
 <!-- Meta Pixel Code -->
 <script>
